@@ -1,0 +1,38 @@
+{
+  "name": "sinov8/monday-api-wrapper",
+  "description": "This is a package that assists with the consumption of some of the basic endpoints for the monday.com api.",
+  "type": "project",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Hein Hanekom",
+      "email": "hein@sinov8.net"
+    },
+    {
+      "name": "Werner Hanekom",
+      "email": "werner@sinov8.net"
+    }
+  ],
+  "autoload": {
+    "files": [
+    ],
+    "psr-4": {
+      "sinov8\\MondayApiWrapper\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "sinov8\\MondayApiWrapper\\tests\\": "tests/"
+    }
+  },
+  "require": {
+    "guzzlehttp/guzzle": "^6.3",
+    "nesbot/carbon": "^2.16.3",
+    "ext-json": "*",
+    "andrew72ru/gql-query-builder": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.2",
+    "vlucas/phpdotenv": "^3.3"
+  }
+}

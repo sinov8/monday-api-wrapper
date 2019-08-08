@@ -1,0 +1,1 @@
+C:37:"PHPUnit\Runner\DefaultTestResultCache":308:{a:2:{s:7:"defects";a:2:{s:26:"MondayUserTest::basic_test";i:4;s:78:"MondayUserTest::calling_get_users_returns_a_list_of_users_registered_on_monday";i:4;}s:5:"times";a:2:{s:26:"MondayUserTest::basic_test";d:0.012;s:78:"MondayUserTest::calling_get_users_returns_a_list_of_users_registered_on_monday";d:0.013;}}}
