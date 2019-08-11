@@ -30,4 +30,24 @@ class MondayService
         ]);
     }
 
+    public function makeRequest($query, $variables)
+    {
+
+        $request = json_encode([
+            'query'     => $query,
+            'variables' => $variables,
+        ]);
+
+        $response = $this->client->request('POST', $this->baseUri, [
+            'headers' => [
+                'Authorization' => 'bearer ' . $this->apiKey,
+                'Content-Type'  => 'application/json'
+            ],
+            'body'    => $request
+        ]);
+
+        return json_decode($response->getBody()->getContents(), true);
+
+    }
+
 }

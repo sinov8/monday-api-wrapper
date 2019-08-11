@@ -8,22 +8,21 @@ class MondayItemService extends MondayService
     public function createItem($boardId, $groupId, $itemName)
     {
 
-        $itemName = json_encode($itemName);
+        $createItemMutation = <<<'CREATE_MUTATION'
+mutation($boardId: Int!, $groupId: String!, $itemName: String!) {
+  create_item(board_id:$boardId,group_id:$groupId,item_name:$itemName){
+    id
+  }
+}
+CREATE_MUTATION;
 
-        $requestDataJson = json_encode([
-            'query' => "mutation { create_item(board_id: {$boardId}, group_id: {$groupId}, item_name:{$itemName}) { id }}"
+        $response = $this->makeRequest($createItemMutation, [
+            'boardId'  => $boardId,
+            'groupId'  => $groupId,
+            'itemName' => json_encode($itemName)
         ]);
 
-        $response = $this->client->request('POST', $this->baseUri, [
-            'headers' => [
-                'Authorization' => 'bearer ' . $this->apiKey,
-                'Content-Type'  => 'application/json'
-            ],
-            'body'    => $requestDataJson
-        ]);
-
-        $itemCreateResult = json_decode($response->getBody()->getContents(), true);
-        return $itemCreateResult["data"]["create_item"]["id"];
+        return $response["data"]["create_item"]["id"];
 
     }
 
@@ -36,32 +35,21 @@ class MondayItemService extends MondayService
             $columnValues[$column->getKey()] = $column->getValue();
         }
 
-
-        $mutation = <<<'MUTATION'
+        $mutation = <<<'UPDATE_MUTATION'
 mutation ($itemId: Int!, $boardId: Int!, $columnValues: JSON!) {
   change_multiple_column_values(item_id:$itemId,board_id:$boardId,column_values:$columnValues){
     id
   }
 }
-MUTATION;
+UPDATE_MUTATION;
 
-        $variables = ['itemId' => $itemId, 'boardId' => $boardId, 'columnValues' => json_encode($columnValues)];
-
-        $request = json_encode([
-            'query'     => $mutation,
-            'variables' => $variables,
+        $response = $this->makeRequest($mutation, [
+            'itemId'       => $itemId,
+            'boardId'      => $boardId,
+            'columnValues' => json_encode($columnValues)
         ]);
 
-        $response = $this->client->request('POST', $this->baseUri, [
-            'headers' => [
-                'Authorization' => 'bearer ' . $this->apiKey,
-                'Content-Type'  => 'application/json'
-            ],
-            'body'    => $request,
-        ]);
-
-        $itemUpdateResult = json_decode($response->getBody()->getContents(), true);
-        return $itemUpdateResult["data"]["change_multiple_column_values"]["id"];
+        return $response["data"]["change_multiple_column_values"]["id"];
 
     }
 
