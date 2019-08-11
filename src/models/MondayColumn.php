@@ -8,6 +8,7 @@ class MondayColumn
     const TYPE_TEXT = "text";
     const TYPE_NUMERIC = "numeric";
     const TYPE_DATE = "date";
+    const TYPE_CHECKBOX = "checkbox";
 
     private $id;
     private $type;
@@ -44,6 +45,9 @@ class MondayColumn
                     return ['date' => $this->value->format('Y-m-d')];
                 }
                 return null;
+
+            case self::TYPE_CHECKBOX:
+                return $this->value ? ['checked' => 'true'] : ['checked' => 'false'];
 
         }
 
