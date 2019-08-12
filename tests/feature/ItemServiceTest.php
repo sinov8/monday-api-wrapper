@@ -41,8 +41,8 @@ class ItemServiceTest extends TestCase
         $itemId = $this->mondayItemService->createItem(287994487, "new_group82", "Test " . Carbon::now());
 
         $updatedItemId = $this->mondayItemService->updateItem((int)$itemId, 287994487, [
-            new MondayColumn("text8", MondayColumn::TYPE_TEXT, "THE DEMO CO"),
-            new MondayColumn("name", MondayColumn::TYPE_TEXT, "DEMO CO"),
+            new MondayColumn("text8", MondayColumn::TYPE_TEXT, "THE DEMO CO TRUE"),
+            new MondayColumn("name", MondayColumn::TYPE_TEXT, "Test TRUE"),
             new MondayColumn("activeproperties", MondayColumn::TYPE_NUMERIC, "700"),
             new MondayColumn("lastticketlogged", MondayColumn::TYPE_DATE, Carbon::now()),
             new MondayColumn("check", MondayColumn::TYPE_CHECKBOX, true)

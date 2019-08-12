@@ -47,7 +47,8 @@ class MondayColumn
                 return null;
 
             case self::TYPE_CHECKBOX:
-                return $this->value ? ['checked' => 'true'] : ['checked' => 'false'];
+                // Need to send empty value instead of checked = false to uncheck
+                return filter_var($this->value, FILTER_VALIDATE_BOOLEAN) === true ? ['checked' => 'true'] : null;
 
         }
 
