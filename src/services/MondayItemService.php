@@ -19,7 +19,7 @@ CREATE_MUTATION;
         $response = $this->makeRequest($createItemMutation, [
             'boardId'  => $boardId,
             'groupId'  => $groupId,
-            'itemName' => json_encode($itemName)
+            'itemName' => $itemName
         ]);
 
         return $response["data"]["create_item"]["id"];

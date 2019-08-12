@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="MondayUserTest" file="C:\Users\Hein Hanekom\PhpstormProjects\monday-api-wrapper\tests\feature\Test.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.012809">
+    <testcase name="calling_get_users_returns_a_list_of_users_registered_on_monday" class="MondayUserTest" classname="MondayUserTest" file="C:\Users\Hein Hanekom\PhpstormProjects\monday-api-wrapper\tests\feature\Test.php" line="13" assertions="0" time="0.012809">
+      <error type="Error">MondayUserTest::calling_get_users_returns_a_list_of_users_registered_on_monday
+Error: Class 'sinov8\MondayApiWrapper\services\MondayUserService' not found
+
+C:\Users\Hein Hanekom\PhpstormProjects\monday-api-wrapper\tests\feature\Test.php:16
+</error>
+    </testcase>
+  </testsuite>
+</testsuites>
