@@ -1,0 +1,12 @@
+# docker-compose.yml
+version: '3'
+services:
+  composer:
+    image: composer:latest
+    volumes:
+      - .:/app
+  phpunit:
+    image: php:7.4-cli
+    volumes:
+      - .:/app
+    working_dir: /app
